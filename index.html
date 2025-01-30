@@ -82,6 +82,24 @@
       margin-bottom: 1rem;
     }
 
+    /* Download Resume Button */
+    .resume-button-container {
+      margin-top: 1rem;
+    }
+    .resume-button {
+      background-color: #0287da;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .resume-button:hover {
+      background-color: #026ba1;
+    }
+
     /* ---------------
        SECTION TITLES
     ---------------- */
@@ -227,7 +245,9 @@
       padding: 1rem;
       transition: transform 0.3s ease;
       border-top: 3px solid #00acc1;
-      /* Removed min-height and flex to allow content to align properly */
+      /* Ensure the card's content wraps properly */
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     .skill-card:hover {
       transform: scale(1.02);
@@ -304,7 +324,7 @@
         font-size: 1.1rem;
       }
       .skills-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Ensures each skill card goes full-width in mobile view */
       }
       .project-card {
         margin-bottom: 1.2rem;
@@ -323,6 +343,13 @@
       <h3>Software Developer, Enterprise Integration</h3>
       <p>Rajasthan, India • +91 8003522334 • <em>shreeansh2m2000@gmail.com</em></p>
       <p class="quote">"Pushing boundaries, automating solutions, and integrating possibilities."</p>
+
+      <!-- Download Resume Button -->
+      <div class="resume-button-container">
+        <!-- Update the href with your actual resume PDF link -->
+        <a class="resume-button" href="./Shreeansh Srivastava Resume 2025.pdf" download>Download Resume</a>
+      </div>
+
     </div>
   </header>
 
@@ -452,7 +479,7 @@
           <strong>Technologies:</strong> Node.js, Express, AWS, GCP, Azure, iPaaS, CI/CD
         </p>
       </div>
-</section>
+    </section>
 
     <!-- SKILLS SECTION (Cards) -->
     <h2 class="section-title">Skills</h2>
