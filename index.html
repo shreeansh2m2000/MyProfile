@@ -87,19 +87,23 @@
       margin-top: 1.2rem;
     }
     .resume-button {
-      /* Gradient background for a more attractive look */
-      background: linear-gradient(to right, #FF5F6D, #FFC371);
-      color: #fff;
-      padding: 0.8rem 1.2rem;
+      /* Semi-transparent bluish background */
+      background: rgba(2, 135, 218, 0.1);
+      /* Bluish text color matching border */
+      color: #0287da;
+      /* Subtle border and round corners */
+      border: 2px solid #0287da;
+      border-radius: 25px;
+      padding: 0.8rem 1.4rem;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s ease, transform 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
       font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       display: inline-block;
     }
     .resume-button:hover {
-      background: linear-gradient(to right, #FF9966, #FF5E62);
+      /* Opaque on hover, with white text */
+      background: #0287da;
+      color: #fff;
       transform: translateY(-2px);
     }
 
