@@ -84,20 +84,23 @@
 
     /* Download Resume Button */
     .resume-button-container {
-      margin-top: 1rem;
+      margin-top: 1.2rem;
     }
     .resume-button {
-      background-color: #0287da;
+      /* Gradient background for a more attractive look */
+      background: linear-gradient(to right, #FF5F6D, #FFC371);
       color: #fff;
       padding: 0.8rem 1.2rem;
       text-decoration: none;
       border-radius: 5px;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease, transform 0.3s ease;
       font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       display: inline-block;
     }
     .resume-button:hover {
-      background-color: #026ba1;
+      background: linear-gradient(to right, #FF9966, #FF5E62);
+      transform: translateY(-2px);
     }
 
     /* ---------------
@@ -323,8 +326,9 @@
       .subheading {
         font-size: 1.1rem;
       }
+      /* Force skills to stack in one column */
       .skills-container {
-        grid-template-columns: 1fr; /* Ensures each skill card goes full-width in mobile view */
+        grid-template-columns: 1fr !important;
       }
       .project-card {
         margin-bottom: 1.2rem;
@@ -347,9 +351,10 @@
       <!-- Download Resume Button -->
       <div class="resume-button-container">
         <!-- Update the href with your actual resume PDF link -->
-        <a class="resume-button" href="./Shreeansh Srivastava Resume 2025.pdf" download>Download Resume</a>
+        <a class="resume-button" href="./Shreeansh Srivastava Resume 2025.pdf" download>
+          Download Resume 📄
+        </a>
       </div>
-
     </div>
   </header>
 
