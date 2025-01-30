@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shreeansh Srivastava - Profile</title>
+  <style>
+    /* ---------------------------
+       GENERAL RESET & BODY STYLES
+    ---------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      /* Subtle, light background for better readability */
+      background: linear-gradient(135deg, #fafafa 0%, #e0f7fa 100%);
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+      color: #444;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 2rem;
+    }
+
+    /* ----------------
+       HEADER SECTION
+    ----------------- */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;       /* Center the contents horizontally */
+      text-align: center;        /* Center the text within header */
+      padding: 2rem 0 1.5rem;
+    }
+
+    /* Text portion of header */
+    .header-text {
+      max-width: 600px;
+      margin-bottom: 1rem;
+    }
+
+    .header-text h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      color: #222;
+    }
+
+    .header-text h3 {
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      color: #444;
+    }
+
+    .header-text p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #555;
+    }
+
+    /* Quote styling */
+    .quote {
+      font-style: italic;
+      color: #222;
+      margin-top: 1rem;
+    }
+
+    /* Profile Photo */
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
+      margin-bottom: 1rem;
+    }
+
+    /* ---------------
+       SECTION TITLES
+    ---------------- */
+    .section-title {
+      font-size: 1.6rem;
+      margin: 2.5rem 0 1rem;
+      color: #222;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 60px;
+      height: 3px;
+      background-color: #0287da;
+    }
+
+    /* ----------------
+       SECTION STYLING
+    ----------------- */
+    section {
+      background: #f8f8f8;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      opacity: 0;             
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Paragraph and List Styles */
+    section p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    .custom-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1rem;
+    }
+    .custom-list li {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 0.6rem;
+      color: #555;
+    }
+    .custom-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 8px;
+      height: 8px;
+      background-color: #00acc1;
+      border-radius: 50%;
+    }
+
+    .small-title {
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #222;
+    }
+
+    /* ------------------
+       PROJECTS SECTION
+    ------------------- */
+    .subheading {
+      font-size: 1.2rem;
+      margin: 2rem 0 1rem;
+      font-weight: 600;
+      color: #222;
+    }
+
+    /* Make each project an exciting "card" */
+    .project-card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+    .project-card h4 {
+      margin-bottom: 0.6rem;
+      color: #222;
+      font-size: 1.1rem;
+    }
+    .project-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1rem;
+    }
+    .project-card ul li {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 0.6rem;
+      color: #555;
+    }
+    .project-card ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 8px;
+      height: 8px;
+      background-color: #00acc1;
+      border-radius: 50%;
+    }
+
+    /* Technologies line styling */
+    .tech-line {
+      font-style: italic;
+      color: #666;
+      margin-top: -0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ----------------
+       SKILLS SECTION
+    ----------------- */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .skill-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+      padding: 1rem;
+      transition: transform 0.3s ease;
+      border-top: 3px solid #00acc1;
+      /* Removed min-height and flex to allow content to align properly */
+    }
+    .skill-card:hover {
+      transform: scale(1.02);
+    }
+    .skill-card h4 {
+      margin-bottom: 0.6rem;
+      color: #222;
+    }
+    .skill-card .card-list {
+      list-style: none;
+      margin-left: 0;
+      margin-top: 0.5rem;
+      padding-left: 0;
+      color: #555;
+    }
+    .skill-card .card-list li {
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    .skill-card .card-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #00acc1;
+    }
+
+    /* -------------
+       CONNECT SECTION
+    -------------- */
+    .connect {
+      text-align: center;
+    }
+    .connect p {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    .contact-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-weight: bold;
+      background: #00acc1;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .contact-links a:hover {
+      background: #00838f;
+    }
+
+    /* -----------
+       FOOTER
+    ------------ */
+    footer {
+      text-align: center;
+      color: #888;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      padding-bottom: 1rem;
+    }
+
+    /* -----------
+       RESPONSIVE
+    ------------ */
+    @media (max-width: 768px) {
+      .header-text h1 {
+        font-size: 1.8rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .subheading {
+        font-size: 1.1rem;
+      }
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+      .project-card {
+        margin-bottom: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER SECTION -->
+  <header>
+    <!-- Replace with your actual photo URL if available -->
+    <img class="profile-photo" src="./myphoto.png" alt="Profile Photo">
+    <div class="header-text">
+      <h1>SHREEANSH SRIVASTAVA</h1>
+      <h3>Software Developer, Enterprise Integration</h3>
+      <p>Rajasthan, India • +91 8003522334 • <em>shreeansh2m2000@gmail.com</em></p>
+      <p class="quote">"Pushing boundaries, automating solutions, and integrating possibilities."</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- SUMMARY SECTION -->
+    <h2 class="section-title">Summary</h2>
+    <section id="summary">
+      <p>
+        As a Software Developer at Celebal Technologies, I design, develop, and manage robust and
+        scalable enterprise-grade integration solutions on the Azure Cloud Platform. I leverage my expertise in
+        Azure PaaS, Backend, and Serverless technologies to deliver value to clients across various
+        domains such as banking, sustainability, healthcare, and education.
+      </p>
+      <p>
+        My experience includes leading cloud migration, optimizing cloud infrastructure for performance and security,
+        and championing digital transformation. Known for strong problem-solving, automation, and
+        DevOps skills, I strive to deliver cost-efficient, scalable cloud solutions that effectively bridge IT
+        and business objectives.
+      </p>
+    </section>
+
+    <!-- WORK EXPERIENCE SECTION -->
+    <h2 class="section-title">Work Experience</h2>
+    <section id="work-experience">
+      <h3 class="small-title">Celebal Technologies - India</h3>
+      <p><em>Software Developer, Enterprise Integration (April 2022 - Present)</em></p>
+      <ul class="custom-list">
+        <li>Designed solutions across Azure, GCP, and AWS for seamless system connectivity.</li>
+        <li>Built backend and integration services using serverless and cloud-native technologies.</li>
+        <li>Enabled reliable data flow using event streaming and messaging services.</li>
+        <li>Implemented cloud-based security measures for safe and compliant integrations.</li>
+        <li>Ensured availability with logging, monitoring, and automated recovery.</li>
+      </ul>
+    </section>
+
+    <!-- DETAILED PROJECTS SECTION -->
+    <h2 class="section-title">Detailed Projects</h2>
+    <section id="detailed-projects">
+      <!-- Integration Projects Subsection -->
+
+      <div class="project-card">
+        <h4>1. NexusOne Integration Dashboard</h4>
+        <ul>
+          <li>Designed and developed a centralized platform for unified interface to list, monitor, and manage integrations across the organization</li>
+          <li>Created backend stack and OData APIs while collaborating with BAU and architects for design decisions</li>
+          <li>Designed and implemented scalable OData APIs for seamless integration monitoring</li>
+          <li>Delivered backend development ahead of project deadlines while maintaining high quality</li>
+          <li>Adopted code-first approach in C# EF Core for efficient database modeling</li>
+          <li>Integrated Audit.NET to maintain audit tables for each database table</li>
+          <li>Automated Entity Framework Core migrations in DevOps pipelines</li>
+          <li>Wrote comprehensive unit and integration tests</li>
+          <li>Enhanced performance by grouping transactions and updating their status asynchronously</li>
+        </ul>
+        <p class="tech-line">
+          <strong>Technologies:</strong> Function Apps, APIM, Service Bus, C# ASP, OData, Log Analytics Workspace, Azure SQL, Oauth2.0, Entity Framework with Auditing
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h4>2. Modern Integration Framework</h4>
+        <ul>
+          <li>Developed scalable integration solutions between source and F&O systems using Azure Functions and C#</li>
+          <li>Built OData APIs and backend systems for seamless data retrieval and transmission</li>
+          <li>Created cron-based and HTTP-triggered workflows for automated data synchronization</li>
+          <li>Implemented retry mechanisms, exception handling, and error-logging</li>
+          <li>Enhanced code maintainability using dependency injection, modular design, and SOLID principles</li>
+        </ul>
+        <p class="tech-line">
+          <strong>Technologies:</strong> Azure Function App, APIM, Azure Service Bus, C#, Entity Framework, Azure Blob Storage, OData, Azure DevOps
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h4>3. Azure Integration for Airline Company</h4>
+        <ul>
+          <li>Designed and managed Azure Integration Services architecture with Hub-and-Spoke model</li>
+          <li>Deployed and managed secure APIs on Azure APIM with subscription key handling</li>
+          <li>Configured Azure PaaS resources across multiple environments with isolation</li>
+          <li>Assisted networking team in configuring Azure Blueprints for security and compliance</li>
+          <li>Enhanced CI/CD pipelines and streamlined system diagnostics through Azure Monitor</li>
+        </ul>
+        <p class="tech-line">
+          <strong>Technologies:</strong> C#, .NET, Azure Functions, SQL Server, Azure DevOps, Azure Logic Apps, APIM, Azure Monitor, Azure App Service, Azure Blueprints
+        </p>
+      </div>
+
+      <!-- Automation & Infrastructure Projects Subsection -->
+
+      <div class="project-card">
+        <h4>4. Azure Service Deployment Automation</h4>
+        <ul>
+          <li>Designed and developed automation system for deploying Azure services using Excel inputs</li>
+          <li>Optimized backend NodeJS code and minimized SQL Database calls</li>
+          <li>Implemented Excel parsing logic to generate Terraform scripts</li>
+          <li>Automated deployment via Azure Repos using integrated pipelines</li>
+          <li>Developed and maintained stored procedures for automation workflows</li>
+          <li>Conducted rigorous system testing for reliability and scalability</li>
+        </ul>
+        <p class="tech-line">
+          <strong>Technologies:</strong> NodeJS, NestJS, Azure Functions, SQL Database, Azure DevOps, Terraform, Azure Logic Apps
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h4>5. Azure Automation as a Service (A3S)</h4>
+        <ul>
+          <li>Developed and maintained complete codebase for end-to-end deployment, monitoring, and costing visualization of Azure resources</li>
+          <li>Integrated Power BI using embedded tokens for interactive resource usage and cost tracking</li>
+          <li>Configured and automated Cron Jobs for scheduling and managing Virtual Machine operations</li>
+          <li>Designed and implemented MSSQL stored procedures, triggers, and scheduled data truncation tasks</li>
+          <li>Integrated Azure Storage Account and Azure Functions to automate Terraform-based deployment</li>
+        </ul>
+        <p class="tech-line">
+          <strong>Technologies:</strong> Node.js, Express, Terraform, Azure Functions, Virtual Machines, WebJobs, Azure Storage Account, MSSQL
+        </p>
+      </div>
+      <div class="project-card">
+        <h4>6. Marketplace Integration Listing</h4>
+        <ul>
+          <li>Designed and implemented architecture for product listing on AWS, GCP, and Azure marketplaces using Node.js and Express</li>
+          <li>Developed end-to-end solution to automate product listing process across multiple cloud marketplaces using iPaaS integration</li>
+          <li>Collaborated with stakeholders to define and optimize the listing process for seamless integration</li>
+          <li>Built scalable and modular APIs to handle marketplace-specific requirements and configurations</li>
+          <li>Enhanced automation workflows to streamline product updates and deployments across platforms</li>
+        </ul>
+        <p class="tech-line">
+          <strong>Technologies:</strong> Node.js, Express, AWS, GCP, Azure, iPaaS, CI/CD
+        </p>
+      </div>
+</section>
+
+    <!-- SKILLS SECTION (Cards) -->
+    <h2 class="section-title">Skills</h2>
+    <section id="skills">
+      <div class="skills-container">
+        <!-- Category 1 -->
+        <div class="skill-card">
+          <h4>Frameworks / Libraries</h4>
+          <ul class="card-list">
+            <li>.NET (C#)</li>
+            <li>Express</li>
+            <li>NestJS</li>
+            <li>Entity Framework / Sequelize</li>
+            <li>OAuth2.0 / SAML</li>
+          </ul>
+        </div>
+        <!-- Category 2 -->
+        <div class="skill-card">
+          <h4>Languages</h4>
+          <ul class="card-list">
+            <li>Node.js</li>
+            <li>C#</li>
+            <li>PowerShell</li>
+            <li>SQL / NoSQL</li>
+          </ul>
+        </div>
+        <!-- Category 3 -->
+        <div class="skill-card">
+          <h4>Domains</h4>
+          <ul class="card-list">
+            <li>Application Modernization</li>
+            <li>Enterprise Integration</li>
+            <li>Infrastructure as Code (IaC)</li>
+            <li>API Design</li>
+            <li>Microservices Architecture</li>
+          </ul>
+        </div>
+        <!-- Category 4 -->
+        <div class="skill-card">
+          <h4>Integration & Cloud</h4>
+          <ul class="card-list">
+            <li>Azure Functions, Logic Apps, Service Bus, Event Grid, APIM</li>
+            <li>AWS Lambda, API Gateway, SNS, SQS</li>
+            <li>GCP Cloud Functions, Pub/Sub</li>
+            <li>Docker, Kubernetes, Kafka</li>
+          </ul>
+        </div>
+        <!-- Category 5 -->
+        <div class="skill-card">
+          <h4>Certifications</h4>
+          <ul class="card-list">
+            <li>AZ-900 (Azure Fundamentals)</li>
+            <li>AZ-204 (Azure Developer)</li>
+            <li>AZ-104 (Azure Administrator)</li>
+            <li>AZ-305 (Azure Solution Architect)</li>
+            <li>AZ-400 (Azure DevOps Engineer)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <h2 class="section-title">Education</h2>
+    <section id="education">
+      <p>
+        <strong>Bachelor of Technology in Computer Science</strong><br/>
+        Poornima College of Engineering (Rajasthan Technical University) - Jaipur (2016 - 2018)
+      </p>
+      <p>
+        <strong>Senior School Certificate - 12th</strong><br/>
+        Kapil Gyanpeeth School - Manasarovar, Jaipur (2014 - 2016)
+      </p>
+      <p>
+        <strong>Secondary School Certificate - 10th</strong><br/>
+        Ryan International School - Manasarovar, Jaipur (2018 - 2022)
+      </p>
+    </section>
+
+    <!-- CONNECT WITH ME SECTION -->
+    <h2 class="section-title">Connect With Me</h2>
+    <section class="connect" id="connect">
+      <p>You can reach out to me through:</p>
+      <div class="contact-links">
+        <a href="mailto:shreeansh2m2000@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/shreeansh2m2000/" target="_blank">LinkedIn</a>
+        <a href="tel:+918003522334">Phone</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Shreeansh Srivastava. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Fade-in animation on scroll
+    const sections = document.querySelectorAll("section");
+
+    function revealSection() {
+      const revealPoint = 150;
+      const windowHeight = window.innerHeight;
+
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < windowHeight - revealPoint) {
+          section.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealSection);
+    window.addEventListener("load", revealSection);
+  </script>
+</body>
+</html>
